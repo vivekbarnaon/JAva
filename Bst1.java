@@ -38,8 +38,22 @@ public class Bst1 {
         System.out.print(root.data+" ");
         inorder(root.right);
     }
+
+    public static boolean search(Node root, int key){ /// O(h)
+        if(root == null){
+            return false;
+        }
+        if(root.data == key){
+            return true;
+        }
+        if(root.data > key){
+            return search(root.left,key);
+        } else {
+            return search(root.right,key);
+        }
+    }
     public static void main(String[] args){
-        int values[] = {5,1,3,4,2,7};
+        int values[] = {8, 3, 10, 1, 6, 14, 4, 7, 13};
         Node root = null;
 
         // one by one traverse a arrays values
@@ -50,5 +64,11 @@ public class Bst1 {
         // print a inorder traversal
         inorder(root);
         System.out.println();
+
+        if(search(root,1)){
+            System.out.println("found");
+        } else {
+            System.out.print("Not found");
+        }
     }
 }
